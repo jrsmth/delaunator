@@ -1,7 +1,6 @@
 import { Point } from './shape/point';
 
 export class Delaunay {
-
   public static generatePoints(width: number, height: number, numPoints: number): Point[] {
     const pointSet: Point[] = [];
     const xList: number[] = [];
@@ -12,7 +11,7 @@ export class Delaunay {
       while (newPointRequired) {
         const candidate = this.generateRandomPoint(width, height);
 
-        const uniqueCandidate = !((xList.includes(candidate.x)) || (yList.includes(candidate.y)));
+        const uniqueCandidate = !(xList.includes(candidate.x) || yList.includes(candidate.y));
         if (uniqueCandidate) {
           pointSet.push(candidate);
           xList.push(candidate.x);
@@ -26,7 +25,7 @@ export class Delaunay {
     return pointSet;
   }
 
-  private static generateRandomPoint(width: number, height: number){
+  private static generateRandomPoint(width: number, height: number) {
     const borderRatio = 0.1;
     const xMax = width * (1 - borderRatio);
     const yMax = height * (1 - borderRatio);
@@ -34,10 +33,9 @@ export class Delaunay {
     const xMin = width * borderRatio;
     const yMin = height * borderRatio;
 
-    const xCoord = Math.floor((xMin + Math.random() * xMax)) - xMin;
-    const yCoord = Math.floor((yMin + Math.random() * yMax)) - yMin;
+    const xCoord = Math.floor(xMin + Math.random() * xMax) - xMin;
+    const yCoord = Math.floor(yMin + Math.random() * yMax) - yMin;
 
     return new Point(xCoord, yCoord);
   }
-
 }

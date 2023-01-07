@@ -1,4 +1,3 @@
-
 export class Point {
   private readonly _xCoord: number;
   private readonly _yCoord: number;
@@ -8,7 +7,10 @@ export class Point {
     this._yCoord = yCoord;
   }
 
-  get x() { return this._xCoord; }
-  get y() { return this._yCoord; }
-
+  get x() {
+    return this._xCoord;
+  }
+  get y() {
+    return this._yCoord;
+  }
 }
