@@ -5,3 +5,4 @@
 
 ## Install
 `npm i @jrsmiffy/delaunator`
+* See https://www.npmjs.com/package/@jrsmiffy/delaunator
