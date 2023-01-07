@@ -43,5 +43,4 @@ export class Delaunay {
     // Note: result is inclusive of min/max
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-
 }
