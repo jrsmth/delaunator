@@ -1,5 +1,5 @@
 # Delaunator
-*TypeScript library that generates Delaunay Triangulations*
+TypeScript library that generates Delaunay Triangulations
 
 <br>
 
