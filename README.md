@@ -1,2 +1,2 @@
-# delaunay-triangulation-example
-Example web page that renders a Delaunay Triangulation
+# Delaunator
+*TypeScript library that generates Delaunay Triangulations*
