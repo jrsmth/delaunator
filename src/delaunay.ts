@@ -33,9 +33,15 @@ export class Delaunay {
     const xMin = width * borderRatio;
     const yMin = height * borderRatio;
 
-    const xCoord = Math.floor(xMin + Math.random() * xMax) - xMin;
-    const yCoord = Math.floor(yMin + Math.random() * yMax) - yMin;
+    const xCoord = this.randomIntFromInterval(xMin, xMax);
+    const yCoord = this.randomIntFromInterval(yMin, yMax);
 
     return new Point(xCoord, yCoord);
   }
+
+  private static randomIntFromInterval(min: number, max: number) {
+    // Note: result is inclusive of min/max
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
 }
