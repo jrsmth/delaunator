@@ -5,3 +5,8 @@ TypeScript [library](https://www.npmjs.com/package/@jrsmiffy/delaunator) that ge
 
 ## Install
 `npm install @jrsmiffy/delaunator`
+
+<br>
+
+## Release
+`make release bump=<VERSION>|major|minor|patch notes="<NOTES>"`
