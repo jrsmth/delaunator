@@ -1,6 +1,5 @@
 # Delaunator
-TypeScript library that generates Delaunay Triangulations <br>
-https://www.npmjs.com/package/@jrsmiffy/delaunator
+TypeScript [library](https://www.npmjs.com/package/@jrsmiffy/delaunator) that generates Delaunay Triangulations <br>
 
 <br>
 
