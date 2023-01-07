@@ -1,5 +1,6 @@
 {
-  "name": "delaunator",
+  "name": "@jrsmiffy/delaunator",
+  "private": false,
   "version": "1.0.0",
   "description": "TypeScript library that generates Delaunay Triangulations",
   "main": "index.js",
