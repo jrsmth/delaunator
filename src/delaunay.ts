@@ -1,4 +1,6 @@
 import { Point } from './shape/point';
+import { Triangle } from './shape/triangle';
+import { Edge } from './shape/edge';
 
 export class Delaunay {
   public static generatePoints(width: number, height: number, numPoints: number): Point[] {
@@ -25,7 +27,32 @@ export class Delaunay {
     return pointSet;
   }
 
-  private static generateRandomPoint(width: number, height: number) {
+  public static triangulate(points: Point[]): Triangle[] {
+    let solution: Triangle[] = [];
+    if (points.length < 3) return solution;
+
+    if (points.length === 3) return [new Triangle(points[0], points[1], points[2])];
+
+    // #1 - Create a super triangle that encloses all points
+    let superTriangle: Triangle = Triangle.generateSuperTriangle(points);
+    solution.push(superTriangle);
+
+    // #2 - Build the solution by adding each vertex incrementally
+    for (let point of points){
+      solution = this.addVertex(solution, point);
+    }
+
+    // #3 - Discard any triangle that contains a coordinate of the super triangle
+    solution = this.discardSuperTriangle(solution, superTriangle);
+
+    return solution;
+  }
+
+  public static render() {
+    // TODO: Implement
+  }
+
+  private static generateRandomPoint(width: number, height: number) { // TODO: Extract to points?
     const borderRatio = 0.1;
     const xMax = width * (1 - borderRatio);
     const yMax = height * (1 - borderRatio);
@@ -39,8 +66,54 @@ export class Delaunay {
     return new Point(xCoord, yCoord);
   }
 
-  private static randomIntFromInterval(min: number, max: number) {
+  private static randomIntFromInterval(min: number, max: number) { // TODO: Extract to points?
     // Note: result is inclusive of min/max
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+
+  private static addVertex(solution: Triangle[], vertex: Point): Triangle[] { // TODO: Implement
+    let edgeBuffer: Edge[] = [];
+
+    // #1 - For each triangle in the solution:
+    // If this point lies within said triangle's circumcircle, then discard this triangle but hold onto the edges
+    for (let i = 0; i < solution.length; i++) {
+      let triangle = solution[i];
+      if (vertex.isWithinCircumcircle(triangle)) {
+        edgeBuffer.push(new Edge(triangle.pointA, triangle.pointB)); // AB edge
+        edgeBuffer.push(new Edge(triangle.pointB, triangle.pointC)); // BC edge
+        edgeBuffer.push(new Edge(triangle.pointA, triangle.pointC)); // AC edge
+
+        solution.splice(i);
+        i -= 1;
+      }
+    }
+
+    // #2 - Discard duplicate edges in the edge buffer; only retain edges that exist once
+    edgeBuffer = Edge.removeDuplicateEdges(edgeBuffer);
+
+    // #3 - For all remaining edges (AB), construct a new triangle (PAB) using this point (P)
+    for (let edge of edgeBuffer) {
+      solution.push(new Triangle(vertex, edge.pointA, edge.pointB));
+    }
+
+    return solution;
+  }
+
+  private static discardSuperTriangle(solution: Triangle[], superTriangle: Triangle): Triangle[] {
+    // for each triangle in the solution, if any point equals a super triangle point then discard that triangle
+    for (let i = 0; i < solution.length; i++) {
+      let triangle = solution[i];
+
+      if (triangle.pointA === superTriangle.pointA || triangle.pointA === superTriangle.pointB || triangle.pointA === superTriangle.pointC ||
+        triangle.pointB === superTriangle.pointA || triangle.pointB === superTriangle.pointB || triangle.pointB === superTriangle.pointC ||
+        triangle.pointC === superTriangle.pointA || triangle.pointC === superTriangle.pointB || triangle.pointC === superTriangle.pointC) {
+
+        solution.splice(i);
+        i -= 1;
+      }
+    }
+
+    return solution;
+  }
+
 }
