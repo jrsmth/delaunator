@@ -34,4 +34,11 @@ describe('Delaunay Tests', () => {
       expect(ordinate).toBeLessThan(width);
     }
   });
+
+  it('full flow', () => {
+    let result = Delaunay.triangulate(Delaunay.generatePoints(1000, 1000, 100));
+
+    console.log(result);
+  });
+
 });

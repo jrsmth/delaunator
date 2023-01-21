@@ -18,7 +18,7 @@ export class Edge {
     return this._pointB;
   }
 
-  public areEdgesEqual(comparisonEdge: Edge): boolean {
+  public isEqualTo(comparisonEdge: Edge): boolean {
     // the edges AB and CD are equal if:
     // (A == C && B == D) || (A == D && B == C)
 
@@ -49,7 +49,7 @@ export class Edge {
       while (nextEdgePosition < edgeBuffer.length) {
         let nextEdge: Edge = edgeBuffer[nextEdgePosition];
 
-        if (thisEdge.areEdgesEqual(nextEdge)) {
+        if (thisEdge.isEqualTo(nextEdge)) {
           edgeBuffer.splice(thisEdgePosition);
           edgeBuffer.splice(nextEdgePosition);
 
