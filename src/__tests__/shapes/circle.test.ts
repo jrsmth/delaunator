@@ -1,7 +1,7 @@
 import each from 'jest-each';
-import { Point } from './/point';
-import { Circle } from './/circle';
-import { Triangle } from './/triangle';
+import { Point } from '../../shapes/point';
+import { Circle } from '../../shapes/circle';
+import { Triangle } from '../../shapes/triangle';
 
 describe('Circle Tests', () => {
   each([
