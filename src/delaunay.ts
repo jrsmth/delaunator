@@ -124,8 +124,7 @@ export class Delaunay {
 
       const points = [triangle.pointA, triangle.pointB, triangle.pointC];
       const superPoints = [superTriangle.pointA, superTriangle.pointB, superTriangle.pointC];
-      hit:
-      for (const point of points) {
+      hit: for (const point of points) {
         for (const superPoint of superPoints) {
           if (point.x === superPoint.x || point.y === superPoint.y) {
             solution.splice(i);
