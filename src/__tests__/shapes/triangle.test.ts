@@ -35,13 +35,7 @@ describe('Triangle Tests', () => {
     let dummyTriangleFour = new Triangle(points[1], points[3], points[1]);
     let dummyTriangleFive = new Triangle(points[0], points[2], points[1]);
 
-    let solution = [
-      dummyTriangleOne,
-      dummyTriangleTwo,
-      dummyTriangleThree,
-      dummyTriangleFour,
-      dummyTriangleFive
-    ]
+    let solution = [dummyTriangleOne, dummyTriangleTwo, dummyTriangleThree, dummyTriangleFour, dummyTriangleFive];
 
     // when
     const result = Triangle.discardSuperTriangle(solution, superTriangle);
