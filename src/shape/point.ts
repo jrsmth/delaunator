@@ -26,7 +26,7 @@ export class Point {
       circumferenceTriangle.pointC
     );
 
-    let radius = circumcircle.calculateRadius(circumferenceTriangle, center);
+    const radius = circumcircle.calculateRadius(circumferenceTriangle, center);
 
     const dx = center.x - this.x;
     const dy = center.y - this.y;

@@ -42,12 +42,12 @@ export class Edge {
   public static removeDuplicateEdges(edgeBuffer: Edge[]): Edge[] {
     let thisEdgePosition = 0;
     while (thisEdgePosition < edgeBuffer.length) {
-      let thisEdge: Edge = edgeBuffer[thisEdgePosition];
+      const thisEdge: Edge = edgeBuffer[thisEdgePosition];
       let nextEdgePosition = thisEdgePosition + 1;
 
       // for each edge "ahead" of this one, check for equality: if so, then discard this edge and its duplicate
       while (nextEdgePosition < edgeBuffer.length) {
-        let nextEdge: Edge = edgeBuffer[nextEdgePosition];
+        const nextEdge: Edge = edgeBuffer[nextEdgePosition];
 
         if (thisEdge.isEqualTo(nextEdge)) {
           edgeBuffer.splice(thisEdgePosition);
