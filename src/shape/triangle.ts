@@ -23,14 +23,14 @@ export class Triangle {
     return this._pointC;
   }
 
-  public static generateSuperTriangle(points: Point[]): Triangle { // TODO: Implement
-    let buffer = 1.1;
-    let innerWidth = Math.max(...points.map(pt => pt.x)) * buffer;
-    let innerHeight = Math.max(...points.map(pt => pt.y)) * buffer;
+  public static generateSuperTriangle(points: Point[]): Triangle {
+    const buffer = 1.1;
+    const innerWidth = Math.max(...points.map(pt => pt.x)) * buffer;
+    const innerHeight = Math.max(...points.map(pt => pt.y)) * buffer;
 
-    let pointA = new Point(-innerWidth, -innerHeight);
-    let pointB = new Point(0, 2 * innerHeight);
-    let pointC = new Point(2 * innerWidth, 0);
+    const pointA = new Point(-innerWidth, -innerHeight);
+    const pointB = new Point(0, 2 * innerHeight);
+    const pointC = new Point(2 * innerWidth, 0);
 
     return new Triangle(pointA, pointB, pointC);
   }

@@ -6,16 +6,16 @@ export class Circle {
   public calculateCenter(pointA: Point, pointB: Point, pointC: Point): Point {
     // https://stackoverflow.com/questions/32861804/how-to-calculate-the-centre-point-of-a-circle-given-three-points
 
-    let yDeltaOne = pointB.y - pointA.y;
-    let xDeltaOne = pointB.x - pointA.x;
-    let yDeltaTwo = pointC.y - pointB.y;
-    let xDeltaTwo = pointC.x - pointB.x;
+    const yDeltaOne = pointB.y - pointA.y;
+    const xDeltaOne = pointB.x - pointA.x;
+    const yDeltaTwo = pointC.y - pointB.y;
+    const xDeltaTwo = pointC.x - pointB.x;
 
-    let gradA = yDeltaOne / xDeltaOne;
-    let gradB = yDeltaTwo / xDeltaTwo;
+    const gradA = yDeltaOne / xDeltaOne;
+    const gradB = yDeltaTwo / xDeltaTwo;
 
-    let centerX = (gradA * gradB * (pointA.y - pointC.y) + gradB * (pointA.x + pointB.x) - gradA * (pointB.x+pointC.x)) / (2 * (gradB - gradA));
-    let centerY = -1 * (centerX - (pointA.x + pointB.x) / 2) / gradA +  (pointA.y + pointB.y) / 2;
+    const centerX = (gradA * gradB * (pointA.y - pointC.y) + gradB * (pointA.x + pointB.x) - gradA * (pointB.x+pointC.x)) / (2 * (gradB - gradA));
+    const centerY = -1 * (centerX - (pointA.x + pointB.x) / 2) / gradA +  (pointA.y + pointB.y) / 2;
 
     return new Point(centerX, centerY);
   }

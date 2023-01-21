@@ -34,11 +34,11 @@ export class Delaunay {
     if (points.length === 3) return [new Triangle(points[0], points[1], points[2])];
 
     // #1 - Create a super triangle that encloses all points
-    let superTriangle: Triangle = Triangle.generateSuperTriangle(points);
+    const superTriangle: Triangle = Triangle.generateSuperTriangle(points);
     solution.push(superTriangle);
 
     // #2 - Build the solution by adding each vertex incrementally
-    for (let point of points){
+    for (const point of points){
       solution = this.addVertex(solution, point);
     }
 

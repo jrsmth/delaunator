@@ -22,13 +22,13 @@ export class Edge {
     // the edges AB and CD are equal if:
     // (A == C && B == D) || (A == D && B == C)
 
-    let pointC: Point = comparisonEdge.pointA;
-    let pointD: Point = comparisonEdge.pointB;
+    const pointC: Point = comparisonEdge.pointA;
+    const pointD: Point = comparisonEdge.pointB;
 
-    let ax: number = this.pointA.x; let ay: number = this.pointA.y;
-    let bx: number = this.pointB.x; let by: number = this.pointB.y;
-    let cx: number = pointC.x; let cy: number = pointC.y;
-    let dx: number = pointD.x; let dy: number = pointD.y;
+    const ax: number = this.pointA.x; const ay: number = this.pointA.y;
+    const bx: number = this.pointB.x; const by: number = this.pointB.y;
+    const cx: number = pointC.x; const cy: number = pointC.y;
+    const dx: number = pointD.x; const dy: number = pointD.y;
 
     return (
       (ax === cx && ay === cy) &&
