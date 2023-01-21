@@ -38,7 +38,7 @@ export class Delaunay {
     solution.push(superTriangle);
 
     // #2 - Build the solution by adding each vertex incrementally
-    for (const point of points){
+    for (const point of points) {
       solution = this.addVertex(solution, point);
     }
 
@@ -52,7 +52,8 @@ export class Delaunay {
     // TODO: Implement
   }
 
-  private static generateRandomPoint(width: number, height: number) { // TODO: Extract to points?
+  private static generateRandomPoint(width: number, height: number) {
+    // TODO: Extract to points?
     const borderRatio = 0.1;
     const xMax = width * (1 - borderRatio);
     const yMax = height * (1 - borderRatio);
@@ -66,12 +67,14 @@ export class Delaunay {
     return new Point(xCoord, yCoord);
   }
 
-  private static randomIntFromInterval(min: number, max: number) { // TODO: Extract to points?
+  private static randomIntFromInterval(min: number, max: number) {
+    // TODO: Extract to points?
     // Note: result is inclusive of min/max
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  private static addVertex(solution: Triangle[], vertex: Point): Triangle[] { // TODO: Implement
+  private static addVertex(solution: Triangle[], vertex: Point): Triangle[] {
+    // TODO: Implement
     let edgeBuffer: Edge[] = [];
 
     // #1 - For each triangle in the solution:
@@ -104,10 +107,17 @@ export class Delaunay {
     for (let i = 0; i < solution.length; i++) {
       const triangle = solution[i];
 
-      if (triangle.pointA === superTriangle.pointA || triangle.pointA === superTriangle.pointB || triangle.pointA === superTriangle.pointC ||
-        triangle.pointB === superTriangle.pointA || triangle.pointB === superTriangle.pointB || triangle.pointB === superTriangle.pointC ||
-        triangle.pointC === superTriangle.pointA || triangle.pointC === superTriangle.pointB || triangle.pointC === superTriangle.pointC) {
-
+      if (
+        triangle.pointA === superTriangle.pointA ||
+        triangle.pointA === superTriangle.pointB ||
+        triangle.pointA === superTriangle.pointC ||
+        triangle.pointB === superTriangle.pointA ||
+        triangle.pointB === superTriangle.pointB ||
+        triangle.pointB === superTriangle.pointC ||
+        triangle.pointC === superTriangle.pointA ||
+        triangle.pointC === superTriangle.pointB ||
+        triangle.pointC === superTriangle.pointC
+      ) {
         solution.splice(i);
         i -= 1;
       }
@@ -115,5 +125,4 @@ export class Delaunay {
 
     return solution;
   }
-
 }

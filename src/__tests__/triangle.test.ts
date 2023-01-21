@@ -6,12 +6,11 @@ describe('Triangle Tests', () => {
     // note: see ../resources/super-triangle.png
     // given
     const points = Delaunay.generatePoints(1000, 1000, 10);
-    const innerWidth = Math.max(...points.map(pt => pt.x));
-    const innerHeight = Math.max(...points.map(pt => pt.y))
+    const innerWidth = Math.max(...points.map((pt) => pt.x));
+    const innerHeight = Math.max(...points.map((pt) => pt.y));
 
     // when
     const result = Triangle.generateSuperTriangle(points);
-
 
     // then
     expect(result.pointA.x).toBeLessThan(-innerWidth);

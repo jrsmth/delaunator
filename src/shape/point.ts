@@ -23,7 +23,7 @@ export class Point {
     const center = circumcircle.calculateCenter(
       circumferenceTriangle.pointA,
       circumferenceTriangle.pointB,
-      circumferenceTriangle.pointC
+      circumferenceTriangle.pointC,
     );
 
     const radius = circumcircle.calculateRadius(circumferenceTriangle, center);
@@ -31,6 +31,6 @@ export class Point {
     const dx = center.x - this.x;
     const dy = center.y - this.y;
 
-    return (Math.pow((dy), 2) + Math.pow((dx), 2) <= Math.pow((radius), 2));
+    return Math.pow(dy, 2) + Math.pow(dx, 2) <= Math.pow(radius, 2);
   }
 }

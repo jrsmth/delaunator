@@ -25,8 +25,8 @@ export class Triangle {
 
   public static generateSuperTriangle(points: Point[]): Triangle {
     const buffer = 1.1;
-    const innerWidth = Math.max(...points.map(pt => pt.x)) * buffer;
-    const innerHeight = Math.max(...points.map(pt => pt.y)) * buffer;
+    const innerWidth = Math.max(...points.map((pt) => pt.x)) * buffer;
+    const innerHeight = Math.max(...points.map((pt) => pt.y)) * buffer;
 
     const pointA = new Point(-innerWidth, -innerHeight);
     const pointB = new Point(0, 2 * innerHeight);
@@ -34,5 +34,4 @@ export class Triangle {
 
     return new Triangle(pointA, pointB, pointC);
   }
-
 }

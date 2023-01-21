@@ -40,5 +40,4 @@ describe('Delaunay Tests', () => {
 
     console.log(result);
   });
-
 });

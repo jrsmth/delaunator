@@ -1,8 +1,7 @@
-import { Point } from "./point";
-import { Triangle } from "./triangle";
+import { Point } from './point';
+import { Triangle } from './triangle';
 
 export class Circle {
-
   public calculateCenter(pointA: Point, pointB: Point, pointC: Point): Point {
     // https://stackoverflow.com/questions/32861804/how-to-calculate-the-centre-point-of-a-circle-given-three-points
 
@@ -14,8 +13,10 @@ export class Circle {
     const gradA = yDeltaOne / xDeltaOne;
     const gradB = yDeltaTwo / xDeltaTwo;
 
-    const centerX = (gradA * gradB * (pointA.y - pointC.y) + gradB * (pointA.x + pointB.x) - gradA * (pointB.x+pointC.x)) / (2 * (gradB - gradA));
-    const centerY = -1 * (centerX - (pointA.x + pointB.x) / 2) / gradA +  (pointA.y + pointB.y) / 2;
+    const centerX =
+      (gradA * gradB * (pointA.y - pointC.y) + gradB * (pointA.x + pointB.x) - gradA * (pointB.x + pointC.x)) /
+      (2 * (gradB - gradA));
+    const centerY = (-1 * (centerX - (pointA.x + pointB.x) / 2)) / gradA + (pointA.y + pointB.y) / 2;
 
     return new Point(centerX, centerY);
   }
@@ -29,5 +30,4 @@ export class Circle {
 
     return Math.sqrt(radiusSquared);
   }
-
 }
