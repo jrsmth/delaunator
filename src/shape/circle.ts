@@ -22,10 +22,10 @@ export class Circle {
 
   public calculateRadius(circumferenceTriangle: Triangle, center: Point): number {
     // (x-a)^2 + (y-b)^2 = r^2
-    let xTakeA = center.x - circumferenceTriangle.pointA.x;
-    let yTakeB = center.y - circumferenceTriangle.pointA.y;
+    const xTakeA = center.x - circumferenceTriangle.pointA.x;
+    const yTakeB = center.y - circumferenceTriangle.pointA.y;
 
-    let radiusSquared = Math.pow(xTakeA, 2) + Math.pow(yTakeB, 2);
+    const radiusSquared = Math.pow(xTakeA, 2) + Math.pow(yTakeB, 2);
 
     return Math.sqrt(radiusSquared);
   }

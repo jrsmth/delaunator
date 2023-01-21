@@ -77,7 +77,7 @@ export class Delaunay {
     // #1 - For each triangle in the solution:
     // If this point lies within said triangle's circumcircle, then discard this triangle but hold onto the edges
     for (let i = 0; i < solution.length; i++) {
-      let triangle = solution[i];
+      const triangle = solution[i];
       if (vertex.isWithinCircumcircle(triangle)) {
         edgeBuffer.push(new Edge(triangle.pointA, triangle.pointB)); // AB edge
         edgeBuffer.push(new Edge(triangle.pointB, triangle.pointC)); // BC edge
@@ -92,7 +92,7 @@ export class Delaunay {
     edgeBuffer = Edge.removeDuplicateEdges(edgeBuffer);
 
     // #3 - For all remaining edges (AB), construct a new triangle (PAB) using this point (P)
-    for (let edge of edgeBuffer) {
+    for (const edge of edgeBuffer) {
       solution.push(new Triangle(vertex, edge.pointA, edge.pointB));
     }
 
@@ -102,7 +102,7 @@ export class Delaunay {
   private static discardSuperTriangle(solution: Triangle[], superTriangle: Triangle): Triangle[] {
     // for each triangle in the solution, if any point equals a super triangle point then discard that triangle
     for (let i = 0; i < solution.length; i++) {
-      let triangle = solution[i];
+      const triangle = solution[i];
 
       if (triangle.pointA === superTriangle.pointA || triangle.pointA === superTriangle.pointB || triangle.pointA === superTriangle.pointC ||
         triangle.pointB === superTriangle.pointA || triangle.pointB === superTriangle.pointB || triangle.pointB === superTriangle.pointC ||
