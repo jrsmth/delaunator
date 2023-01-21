@@ -1,6 +1,6 @@
-import { Point } from './shape/point';
-import { Triangle } from './shape/triangle';
-import { Edge } from './shape/edge';
+import { Point } from './shapes/point';
+import { Triangle } from './shapes/triangle';
+import { Edge } from './shapes/edge';
 
 export class Delaunay {
   public static generatePoints(width: number, height: number, numPoints: number): Point[] {
@@ -43,7 +43,7 @@ export class Delaunay {
     }
 
     // #3 - Discard any triangle that contains a coordinate of the super triangle
-    solution = this.discardSuperTriangle(solution, superTriangle);
+    // solution = this.discardSuperTriangle(solution, superTriangle);
 
     return solution;
   }
@@ -79,16 +79,31 @@ export class Delaunay {
 
     // #1 - For each triangle in the solution:
     // If this point lies within said triangle's circumcircle, then discard this triangle but hold onto the edges
-    for (let i = 0; i < solution.length; i++) {
+    // for (let i = 0; i < solution.length; i++) {
+    //   const triangle = solution[i];
+    //   if (vertex.isWithinCircumcircle(triangle)) {
+    //     edgeBuffer.push(new Edge(triangle.pointA, triangle.pointB)); // AB edge
+    //     edgeBuffer.push(new Edge(triangle.pointB, triangle.pointC)); // BC edge
+    //     edgeBuffer.push(new Edge(triangle.pointA, triangle.pointC)); // AC edge
+    //
+    //     solution.splice(i);
+    //     i -= 1;
+    //   }
+    // }
+
+    let i = 0;
+    while (i < solution.length) {
       const triangle = solution[i];
+
       if (vertex.isWithinCircumcircle(triangle)) {
         edgeBuffer.push(new Edge(triangle.pointA, triangle.pointB)); // AB edge
         edgeBuffer.push(new Edge(triangle.pointB, triangle.pointC)); // BC edge
         edgeBuffer.push(new Edge(triangle.pointA, triangle.pointC)); // AC edge
 
-        solution.splice(i);
+        solution.splice(i,1);
         i -= 1;
       }
+      i += 1;
     }
 
     // #2 - Discard duplicate edges in the edge buffer; only retain edges that exist once

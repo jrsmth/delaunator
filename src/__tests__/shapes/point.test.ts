@@ -1,5 +1,5 @@
-import { Triangle } from '../shape/triangle';
-import { Point } from '../shape/point';
+import { Triangle } from './/triangle';
+import { Point } from './/point';
 import each from 'jest-each';
 
 describe('Point Tests', () => {

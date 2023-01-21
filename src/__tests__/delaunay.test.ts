@@ -1,5 +1,5 @@
 import { Delaunay } from '../delaunay';
-import { Point } from '../shape/point';
+import { Point } from '../shapes/point';
 
 describe('Delaunay Tests', () => {
   it('should return a unique set of points within a given width and height', () => {
@@ -35,9 +35,20 @@ describe('Delaunay Tests', () => {
     }
   });
 
-  it('full flow', () => {
-    let result = Delaunay.triangulate(Delaunay.generatePoints(1000, 1000, 100));
+  it('should calculate a valid delaunay triangulation for a given set of points', () => {
+    // given
+    const pointA = new Point(10, 10);
+    const pointB = new Point(10, 100);
+    const pointC = new Point(100, 100);
+    const pointD = new Point(100, 10);
 
+    const points = [pointA, pointB, pointC, pointD];
+
+    // when
+    let result = Delaunay.triangulate(points);
+
+    // then
     console.log(result);
+    // expect(result.length).toEqual(2);
   });
 });

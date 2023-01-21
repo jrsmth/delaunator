@@ -1,5 +1,5 @@
 import { Delaunay } from '../delaunay';
-import { Triangle } from '../shape/triangle';
+import { Triangle } from './/triangle';
 
 describe('Triangle Tests', () => {
   it('should return a triangle that encompasses the entire point set', () => {

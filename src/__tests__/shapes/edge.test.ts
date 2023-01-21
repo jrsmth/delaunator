@@ -1,6 +1,6 @@
 import each from 'jest-each';
-import { Edge } from '../shape/edge';
-import { Point } from '../shape/point';
+import { Edge } from '../../shapes/edge';
+import { Point } from '../../shapes/point';
 
 describe('Edge Tests', () => {
   each([
@@ -26,41 +26,41 @@ describe('Edge Tests', () => {
       let edgeTwo: Edge = new Edge(new Point(cx, cy), new Point(dx, dy));
 
       // when
-      let result = edgeOne.isEqualTo(edgeTwo);
+      let result = Edge.areEqual(edgeOne, edgeTwo);
 
       // then
       expect(result).toEqual(equality);
     },
   );
 
-  each([
+  each([ // TODO: extract to fixture?
     [
       [
-        [new Point(0, 0), new Point(100, 0)],
-        [new Point(45, 45), new Point(6, 63)],
-        [new Point(746, 9), new Point(552, 2)],
+        new Edge(new Point(0, 0), new Point(100, 0)),
+        new Edge(new Point(45, 45), new Point(6, 63)),
+        new Edge(new Point(746, 9), new Point(552, 2)),
       ],
       [
-        [new Point(0, 0), new Point(100, 0)],
-        [new Point(45, 45), new Point(6, 63)],
-        [new Point(746, 9), new Point(552, 2)],
+        new Edge(new Point(0, 0), new Point(100, 0)),
+        new Edge(new Point(45, 45), new Point(6, 63)),
+        new Edge(new Point(746, 9), new Point(552, 2)),
       ],
     ],
     [
       [
-        [new Point(0, 0), new Point(100, 0)],
-        [new Point(45, 45), new Point(6, 63)],
-        [new Point(31, 6), new Point(552, 2)],
-        [new Point(552, 2), new Point(31, 6)],
-        [new Point(746, 9), new Point(552, 2)],
+        new Edge(new Point(0, 0), new Point(100, 0)),
+        new Edge(new Point(45, 45), new Point(6, 63)),
+        new Edge(new Point(31, 6), new Point(552, 2)),
+        new Edge(new Point(552, 2), new Point(31, 6)),
+        new Edge(new Point(746, 9), new Point(552, 2)),
       ],
       [
-        [new Point(0, 0), new Point(100, 0)],
-        [new Point(45, 45), new Point(6, 63)],
-        [new Point(746, 9), new Point(552, 2)],
+        new Edge(new Point(0, 0), new Point(100, 0)),
+        new Edge(new Point(45, 45), new Point(6, 63)),
+        new Edge(new Point(746, 9), new Point(552, 2)),
       ],
     ],
-  ]).xit('should remove duplicate edges', (edges: Edge[], processedEdges: Edge[]) => {
+  ]).it('should remove duplicate edges', (edges: Edge[], processedEdges: Edge[]) => {
     // CASE-0: No edge removal necessary
     // CASE-N: Edges that exist more than once are discarded
 
