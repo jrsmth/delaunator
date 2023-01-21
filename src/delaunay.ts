@@ -43,7 +43,7 @@ export class Delaunay {
     }
 
     // #3 - Discard any triangle that contains a coordinate of the super triangle
-    solution = this.discardSuperTriangle(solution, superTriangle);
+    // solution = this.discardSuperTriangle(solution, superTriangle);
 
     return solution;
   }
