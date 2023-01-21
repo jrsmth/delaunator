@@ -43,7 +43,7 @@ export class Delaunay {
     }
 
     // #3 - Discard any triangle that contains a coordinate of the super triangle
-    solution = this.discardSuperTriangle(solution, superTriangle);
+    solution = Triangle.discardSuperTriangle(solution, superTriangle);
 
     return solution;
   }
@@ -112,42 +112,6 @@ export class Delaunay {
     // #3 - For all remaining edges (AB), construct a new triangle (PAB) using this point (P)
     for (const edge of edgeBuffer) {
       solution.push(new Triangle(vertex, edge.pointA, edge.pointB));
-    }
-
-    return solution;
-  }
-
-  private static discardSuperTriangle(solution: Triangle[], superTriangle: Triangle): Triangle[] {
-    // for each triangle in the solution, if any point equals a super triangle point then discard that triangle
-    for (let i = 0; i < solution.length; i++) {
-      const triangle = solution[i];
-
-      const points = [triangle.pointA, triangle.pointB, triangle.pointC];
-      const superPoints = [superTriangle.pointA, superTriangle.pointB, superTriangle.pointC];
-      hit: for (const point of points) {
-        for (const superPoint of superPoints) {
-          if (point.x === superPoint.x || point.y === superPoint.y) {
-            solution.splice(i);
-            i -= 1;
-            continue hit;
-          }
-        }
-      }
-
-      // if (
-      //   triangle.pointA === superTriangle.pointA ||
-      //   triangle.pointA === superTriangle.pointB ||
-      //   triangle.pointA === superTriangle.pointC ||
-      //   triangle.pointB === superTriangle.pointA ||
-      //   triangle.pointB === superTriangle.pointB ||
-      //   triangle.pointB === superTriangle.pointC ||
-      //   triangle.pointC === superTriangle.pointA ||
-      //   triangle.pointC === superTriangle.pointB ||
-      //   triangle.pointC === superTriangle.pointC
-      // ) {
-      //   solution.splice(i);
-      //   i -= 1;
-      // }
     }
 
     return solution;

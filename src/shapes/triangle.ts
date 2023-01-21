@@ -34,4 +34,55 @@ export class Triangle {
 
     return new Triangle(pointA, pointB, pointC);
   }
+
+  public static discardSuperTriangle(solution: Triangle[], superTriangle: Triangle): Triangle[] {
+    // for each triangle in the solution, if any point equals a super triangle point then discard that triangle
+    // for (let i = 0; i < solution.length; i++) {
+    //   const triangle = solution[i];
+    //
+    //   const points = [triangle.pointA, triangle.pointB, triangle.pointC];
+    //   const superPoints = [superTriangle.pointA, superTriangle.pointB, superTriangle.pointC];
+    //   hit: for (const point of points) {
+    //     for (const superPoint of superPoints) {
+    //       if (point.x === superPoint.x || point.y === superPoint.y) {
+    //         solution.splice(i);
+    //         i -= 1;
+    //         continue hit;
+    //       }
+    //     }
+    //   }
+
+      // if (
+      //   triangle.pointA === superTriangle.pointA ||
+      //   triangle.pointA === superTriangle.pointB ||
+      //   triangle.pointA === superTriangle.pointC ||
+      //   triangle.pointB === superTriangle.pointA ||
+      //   triangle.pointB === superTriangle.pointB ||
+      //   triangle.pointB === superTriangle.pointC ||
+      //   triangle.pointC === superTriangle.pointA ||
+      //   triangle.pointC === superTriangle.pointB ||
+      //   triangle.pointC === superTriangle.pointC
+      // ) {
+      //   solution.splice(i);
+      //   i -= 1;
+      // }
+    // }
+
+    // Remove any tri that contains a coord of the Super T
+    // for each tri, if any point equals a super T point, remove the tri
+    let i = 0;
+    while (i < solution.length - 1){
+      const points = [solution[i].pointA, solution[i].pointB, solution[i].pointC];
+      for (const coord of points) {
+        if ((coord.x === superTriangle.pointA.x && coord.y === superTriangle.pointA.y) || (coord.x === superTriangle.pointB.x && coord.y === superTriangle.pointB.y) || (coord.x === superTriangle.pointC.x && coord.y === superTriangle.pointC.y)){
+          solution.splice(i,1);
+          i -= 1;
+          break;
+        }
+      }
+      i+=1;
+    }
+
+    return solution;
+  }
 }

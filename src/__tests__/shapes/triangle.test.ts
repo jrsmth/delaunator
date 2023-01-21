@@ -22,4 +22,31 @@ describe('Triangle Tests', () => {
     expect(result.pointC.x).toBeGreaterThan(2 * innerWidth);
     expect(result.pointC.y).toEqual(0);
   });
+
+  it('should remove any triangle that shares a vertex with the super triangle', () => {
+    // given
+    const points = Delaunay.generatePoints(1000, 1000, 4);
+    const superTriangle = Triangle.generateSuperTriangle(points);
+
+    // construct a dummy solution
+    let dummyTriangleOne = new Triangle(superTriangle.pointA, points[0], points[1]);
+    let dummyTriangleTwo = new Triangle(superTriangle.pointB, points[1], points[2]);
+    let dummyTriangleThree = new Triangle(superTriangle.pointC, points[2], points[3]);
+    let dummyTriangleFour = new Triangle(points[1], points[3], points[1]);
+    let dummyTriangleFive = new Triangle(points[0], points[2], points[1]);
+
+    let solution = [
+      dummyTriangleOne,
+      dummyTriangleTwo,
+      dummyTriangleThree,
+      dummyTriangleFour,
+      dummyTriangleFive
+    ]
+
+    // when
+    const result = Triangle.discardSuperTriangle(solution, superTriangle);
+
+    // then
+    expect(result).toEqual([dummyTriangleFour, dummyTriangleFive]);
+  });
 });
