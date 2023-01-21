@@ -39,7 +39,8 @@ export class Edge {
     return (ax === cx && ay === cy && bx === dx && by === dy) || (ax === dx && ay === dy && bx === cx && by === cy);
   }
 
-  public static removeDuplicateEdges(edgeBuffer: Edge[]): Edge[] { // TODO: sort naming!
+  public static removeDuplicateEdges(edgeBuffer: Edge[]): Edge[] {
+    // TODO: sort naming!
     let j = 0;
     while (j < edgeBuffer.length) {
       // edges stored as eB = [(x1,y1), (x2,y2),    (X1,Y1), (X2,Y2),    ...]
@@ -55,9 +56,9 @@ export class Edge {
           if (j < 0 || j > edgeBuffer.length - 1) break;
           if (k < 0 || k > edgeBuffer.length - 1) break;
         }
-        k += 1
+        k += 1;
       }
-      j += 1
+      j += 1;
     } // properly explain the logic behind this...
     // for each edge:
     // for each edge "ahead" of this edge:
@@ -66,12 +67,7 @@ export class Edge {
     // counter gets decremented to compensate for edge removal
 
     return edgeBuffer;
-
-
   }
-
-
-
 
   //
   //   let thisEdgePosition = 0;
