@@ -18,9 +18,9 @@ export class Point {
   }
 
   public isWithinCircumcircle(circumferenceTriangle: Triangle): boolean {
-    let circumcircle = new Circle();
+    const circumcircle = new Circle();
 
-    let center = circumcircle.calculateCenter(
+    const center = circumcircle.calculateCenter(
       circumferenceTriangle.pointA,
       circumferenceTriangle.pointB,
       circumferenceTriangle.pointC
@@ -28,8 +28,8 @@ export class Point {
 
     let radius = circumcircle.calculateRadius(circumferenceTriangle, center);
 
-    let dx = center.x - this.x;
-    let dy = center.y - this.y;
+    const dx = center.x - this.x;
+    const dy = center.y - this.y;
 
     return (Math.pow((dy), 2) + Math.pow((dx), 2) <= Math.pow((radius), 2));
   }
