@@ -61,7 +61,7 @@ describe('Edge Tests', () => {
         new Edge(new Point(746, 9), new Point(552, 2)),
       ],
     ],
-  ]).xit('should remove duplicate edges', (edges: Edge[], processedEdges: Edge[]) => {
+  ]).it('should remove edges were the count is greater than 1', (edges: Edge[], processedEdges: Edge[]) => {
     // CASE-0: No edge removal necessary
     // CASE-N: Edges that exist more than once are discarded
 
