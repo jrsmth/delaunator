@@ -42,5 +42,13 @@ describe('Triangle Tests', () => {
 
     // then
     expect(result).toEqual([dummyTriangleFour, dummyTriangleFive]);
+    // get a failing solution from lib and try to debug issue
+
+    // TODO:
+    // 813 349 388 265 2664.2 0    <---- this one belongs to the super triangle and should have been removed!
+    // 813 349 388 265 662 569
+    // 813 349 1211 529 777 614
+    // 813 349 662 569 777 614
+    // 5 points ^
   });
 });
