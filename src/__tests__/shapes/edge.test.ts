@@ -33,7 +33,8 @@ describe('Edge Tests', () => {
     },
   );
 
-  each([ // TODO: extract to fixture?
+  each([
+    // TODO: extract to fixture?
     [
       [
         new Edge(new Point(0, 0), new Point(100, 0)),

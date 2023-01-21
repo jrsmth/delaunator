@@ -17,7 +17,8 @@ export class Edge {
     return this._pointB;
   }
 
-  public static areEqual(thisEdge: Edge, comparisonEdge: Edge): boolean { // TODO: consider refactor (too much static?)
+  public static areEqual(thisEdge: Edge, comparisonEdge: Edge): boolean {
+    // TODO: consider refactor (too much static?)
     // the edges AB and CD are equal if:
     // (A == C && B == D) || (A == D && B == C)
 

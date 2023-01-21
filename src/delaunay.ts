@@ -100,7 +100,7 @@ export class Delaunay {
         edgeBuffer.push(new Edge(triangle.pointB, triangle.pointC)); // BC edge
         edgeBuffer.push(new Edge(triangle.pointA, triangle.pointC)); // AC edge
 
-        solution.splice(i,1);
+        solution.splice(i, 1);
         i -= 1;
       }
       i += 1;
