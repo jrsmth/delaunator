@@ -27,5 +27,5 @@ jobs:
       - name: Install NPM Modules
         run: npm ci
 
-      - name: Rest Tests
+      - name: Run Tests
         run: npm test
