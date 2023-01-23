@@ -26,7 +26,8 @@ describe('Triangle Tests', () => {
     expect(result.pointC.y).toEqual(0);
   });
 
-  each([ // TODO: extract to fixture?
+  each([
+    // TODO: extract to fixture?
     [
       [
         new Triangle(new Point(813, 349), new Point(388, 265), new Point(2664.2, 0)),
@@ -37,29 +38,32 @@ describe('Triangle Tests', () => {
       [
         new Triangle(new Point(813, 349), new Point(388, 265), new Point(662, 569)),
         new Triangle(new Point(813, 349), new Point(1211, 529), new Point(777, 614)),
-        new Triangle(new Point(813, 349), new Point(662, 569), new Point(777, 614))
-      ]
-    ]
-  ]).it('should remove any triangle that shares a vertex with the super triangle', (solnBefore: Triangle[], solnAfter: Triangle[]) => {
-    // given
-    let points: Point[] = [];
-    for (const triangle of solnBefore) points.push(triangle.pointA, triangle.pointB, triangle.pointC);
+        new Triangle(new Point(813, 349), new Point(662, 569), new Point(777, 614)),
+      ],
+    ],
+  ]).it(
+    'should remove any triangle that shares a vertex with the super triangle',
+    (solnBefore: Triangle[], solnAfter: Triangle[]) => {
+      // given
+      let points: Point[] = [];
+      for (const triangle of solnBefore) points.push(triangle.pointA, triangle.pointB, triangle.pointC);
 
-    const superTriangle = Triangle.generateSuperTriangle(points); // TODO: dbl-check accuracy
-    console.log(superTriangle);
+      const superTriangle = Triangle.generateSuperTriangle(points); // TODO: dbl-check accuracy
+      console.log(superTriangle);
 
-    // when
-    const result = Triangle.discardSuperTriangle(solnBefore, superTriangle);
+      // when
+      const result = Triangle.discardSuperTriangle(solnBefore, superTriangle);
 
-    // then
-    // expect(result).toEqual(solnAfter);
-    // get a failing solution from lib and try to debug issue
+      // then
+      // expect(result).toEqual(solnAfter);
+      // get a failing solution from lib and try to debug issue
 
-    // TODO:
-    // 813 349 388 265 2664.2 0    <---- this one belongs to the super triangle and should have been removed!
-    // 813 349 388 265 662 569
-    // 813 349 1211 529 777 614
-    // 813 349 662 569 777 614
-    // 5 points ^
-  });
+      // TODO:
+      // 813 349 388 265 2664.2 0    <---- this one belongs to the super triangle and should have been removed!
+      // 813 349 388 265 662 569
+      // 813 349 1211 529 777 614
+      // 813 349 662 569 777 614
+      // 5 points ^
+    },
+  );
 });
