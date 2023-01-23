@@ -34,12 +34,12 @@ describe('Triangle Tests', () => {
         new Triangle(new Point(1379, 605), new Point(1430, 631), new Point(1149, 282)),
         new Triangle(new Point(1379, 605), new Point(1149, 282), new Point(868, 377)),
         new Triangle(new Point(170, 316), new Point(1149, 282), new Point(868, 377)),
-        new Triangle(new Point(170, 316), new Point(1149, 282), new Point(-1573.0000000000002, -694.1))
+        new Triangle(new Point(170, 316), new Point(1149, 282), new Point(-1573.0000000000002, -694.1)),
       ],
       [
         new Triangle(new Point(1379, 605), new Point(1430, 631), new Point(1149, 282)),
         new Triangle(new Point(1379, 605), new Point(1149, 282), new Point(868, 377)),
-        new Triangle(new Point(170, 316), new Point(1149, 282), new Point(868, 377))
+        new Triangle(new Point(170, 316), new Point(1149, 282), new Point(868, 377)),
       ],
     ],
   ]).it(
