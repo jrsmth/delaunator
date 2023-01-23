@@ -36,7 +36,7 @@ export class Delaunay {
     // #1 - Create a super triangle that encloses all points
     const superTriangle: Triangle = Triangle.generateSuperTriangle(points);
     solution.push(superTriangle);
-    alert(superTriangle);
+    console.log(superTriangle);
 
     // #2 - Build the solution by adding each vertex incrementally
     for (const point of points) {
