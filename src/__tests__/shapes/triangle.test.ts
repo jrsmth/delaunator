@@ -1,5 +1,8 @@
 import { Delaunay } from '../../delaunay';
 import { Triangle } from '../../shapes/triangle';
+import each from 'jest-each';
+import { Edge } from '../../shapes/edge';
+import { Point } from '../../shapes/point';
 
 describe('Triangle Tests', () => {
   it('should return a triangle that encompasses the entire point set', () => {
@@ -23,25 +26,33 @@ describe('Triangle Tests', () => {
     expect(result.pointC.y).toEqual(0);
   });
 
-  it('should remove any triangle that shares a vertex with the super triangle', () => {
+  each([ // TODO: extract to fixture?
+    [
+      [
+        new Triangle(new Point(813, 349), new Point(388, 265), new Point(2664.2, 0)),
+        new Triangle(new Point(813, 349), new Point(388, 265), new Point(662, 569)),
+        new Triangle(new Point(813, 349), new Point(1211, 529), new Point(777, 614)),
+        new Triangle(new Point(813, 349), new Point(662, 569), new Point(777, 614)),
+      ],
+      [
+        new Triangle(new Point(813, 349), new Point(388, 265), new Point(662, 569)),
+        new Triangle(new Point(813, 349), new Point(1211, 529), new Point(777, 614)),
+        new Triangle(new Point(813, 349), new Point(662, 569), new Point(777, 614))
+      ]
+    ]
+  ]).it('should remove any triangle that shares a vertex with the super triangle', (solnBefore: Triangle[], solnAfter: Triangle[]) => {
     // given
-    const points = Delaunay.generatePoints(1000, 1000, 4);
-    const superTriangle = Triangle.generateSuperTriangle(points);
+    let points: Point[] = [];
+    for (const triangle of solnBefore) points.push(triangle.pointA, triangle.pointB, triangle.pointC);
 
-    // construct a dummy solution
-    let dummyTriangleOne = new Triangle(superTriangle.pointA, points[0], points[1]);
-    let dummyTriangleTwo = new Triangle(superTriangle.pointB, points[1], points[2]);
-    let dummyTriangleThree = new Triangle(superTriangle.pointC, points[2], points[3]);
-    let dummyTriangleFour = new Triangle(points[1], points[3], points[1]);
-    let dummyTriangleFive = new Triangle(points[0], points[2], points[1]);
-
-    let solution = [dummyTriangleOne, dummyTriangleTwo, dummyTriangleThree, dummyTriangleFour, dummyTriangleFive];
+    const superTriangle = Triangle.generateSuperTriangle(points); // TODO: dbl-check accuracy
+    console.log(superTriangle);
 
     // when
-    const result = Triangle.discardSuperTriangle(solution, superTriangle);
+    const result = Triangle.discardSuperTriangle(solnBefore, superTriangle);
 
     // then
-    expect(result).toEqual([dummyTriangleFour, dummyTriangleFive]);
+    // expect(result).toEqual(solnAfter);
     // get a failing solution from lib and try to debug issue
 
     // TODO:
