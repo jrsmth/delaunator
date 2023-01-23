@@ -29,33 +29,27 @@ describe('Triangle Tests', () => {
   each([
     // TODO: extract to fixture?
     [
+      new Triangle(new Point(-1573.0000000000002, -694.1), new Point(0, 1388.2), new Point(3146.0000000000005, 0)),
       [
-        new Triangle(new Point(813, 349), new Point(388, 265), new Point(2664.2, 0)),
-        new Triangle(new Point(813, 349), new Point(388, 265), new Point(662, 569)),
-        new Triangle(new Point(813, 349), new Point(1211, 529), new Point(777, 614)),
-        new Triangle(new Point(813, 349), new Point(662, 569), new Point(777, 614)),
+        new Triangle(new Point(1379, 605), new Point(1430, 631), new Point(1149, 282)),
+        new Triangle(new Point(1379, 605), new Point(1149, 282), new Point(868, 377)),
+        new Triangle(new Point(170, 316), new Point(1149, 282), new Point(868, 377)),
+        new Triangle(new Point(170, 316), new Point(1149, 282), new Point(-1573.0000000000002, -694.1))
       ],
       [
-        new Triangle(new Point(813, 349), new Point(388, 265), new Point(662, 569)),
-        new Triangle(new Point(813, 349), new Point(1211, 529), new Point(777, 614)),
-        new Triangle(new Point(813, 349), new Point(662, 569), new Point(777, 614)),
+        new Triangle(new Point(1379, 605), new Point(1430, 631), new Point(1149, 282)),
+        new Triangle(new Point(1379, 605), new Point(1149, 282), new Point(868, 377)),
+        new Triangle(new Point(170, 316), new Point(1149, 282), new Point(868, 377))
       ],
     ],
   ]).it(
     'should remove any triangle that shares a vertex with the super triangle',
-    (solnBefore: Triangle[], solnAfter: Triangle[]) => {
-      // given
-      let points: Point[] = [];
-      for (const triangle of solnBefore) points.push(triangle.pointA, triangle.pointB, triangle.pointC);
-
-      const superTriangle = Triangle.generateSuperTriangle(points); // TODO: dbl-check accuracy
-      console.log(superTriangle);
-
+    (superTriangle: Triangle, solnBefore: Triangle[], solnAfter: Triangle[]) => {
       // when
       const result = Triangle.discardSuperTriangle(solnBefore, superTriangle);
 
       // then
-      // expect(result).toEqual(solnAfter);
+      expect(result).toEqual(solnAfter);
       // get a failing solution from lib and try to debug issue
 
       // TODO:

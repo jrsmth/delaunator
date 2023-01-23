@@ -71,7 +71,7 @@ export class Triangle {
     // Remove any tri that contains a coord of the Super T
     // for each tri, if any point equals a super T point, remove the tri
     let i = 0;
-    while (i < solution.length - 1) {
+    while (i < solution.length) {
       const points = [solution[i].pointA, solution[i].pointB, solution[i].pointC];
       for (const coord of points) {
         if (
