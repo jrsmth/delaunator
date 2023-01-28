@@ -55,7 +55,7 @@ describe('Delaunay Tests', () => {
 
   it('should return a triangle with a duplicated coordinate pair for a set of 2 points', () => {
     // i.e. given a set of two points, a single 'edge' between them should be rendered
-      // this achieved through a triangle of the form [pointA, pointA, pointB]
+    // this achieved through a triangle of the form [pointA, pointA, pointB]
 
     // given
     let points = Delaunay.generatePoints(100, 100, 2);
