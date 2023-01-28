@@ -1,5 +1,6 @@
 import { Delaunay } from '../delaunay';
 import { Point } from '../shapes/point';
+import { Triangle } from '../shapes/triangle';
 
 describe('Delaunay Tests', () => {
   it('should return a unique set of points within a given width and height', () => {
@@ -50,5 +51,32 @@ describe('Delaunay Tests', () => {
     // then
     console.log(result);
     // expect(result.length).toEqual(2);
+  });
+
+  it('should return a triangle with a duplicated coordinate pair for a set of 2 points', () => {
+    // i.e. given a set of two points, a single 'edge' between them should be rendered
+      // this achieved through a triangle of the form [pointA, pointA, pointB]
+
+    // given
+    let points = Delaunay.generatePoints(100, 100, 2);
+
+    // when
+    let solution = Delaunay.triangulate(points);
+
+    // then
+    expect(solution.length).toEqual(1);
+
+    // pointA == pointB
+    // pointA == pointC
+    // pointB == pointC
+    // strictly one of these should be true
+    let tri: Triangle = solution[0];
+    let equalityCount = 0;
+
+    if (tri.pointA == tri.pointB) equalityCount++;
+    if (tri.pointA == tri.pointC) equalityCount++;
+    if (tri.pointB == tri.pointC) equalityCount++;
+
+    expect(equalityCount).toBe(1);
   });
 });

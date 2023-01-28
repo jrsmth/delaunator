@@ -29,7 +29,9 @@ export class Delaunay {
 
   public static triangulate(points: Point[]): Triangle[] {
     let solution: Triangle[] = [];
-    if (points.length < 3) return solution;
+    if (points.length < 2) return solution;
+
+    if (points.length === 2) return [new Triangle(points[0], points[0], points[1])];
 
     if (points.length === 3) return [new Triangle(points[0], points[1], points[2])];
 
