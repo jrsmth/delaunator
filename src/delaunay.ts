@@ -20,7 +20,7 @@ export class Delaunay {
           yList.push(candidate.y);
 
           newPointRequired = false;
-        } // else console.debug(`Duplicate candidate found! (x: ${candidate.x}, y: ${candidate.y})`);
+        }
       }
     }
 
@@ -38,7 +38,6 @@ export class Delaunay {
     // #1 - Create a super triangle that encloses all points
     const superTriangle: Triangle = Triangle.generateSuperTriangle(points);
     solution.push(superTriangle);
-    console.log(superTriangle);
 
     // #2 - Build the solution by adding each vertex incrementally
     for (const point of points) {
@@ -51,12 +50,7 @@ export class Delaunay {
     return solution;
   }
 
-  public static render() {
-    // TODO: Implement
-  }
-
   private static generateRandomPoint(width: number, height: number) {
-    // TODO: Extract to points?
     const borderRatio = 0.1;
     const xMax = width * (1 - borderRatio);
     const yMax = height * (1 - borderRatio);
@@ -71,28 +65,11 @@ export class Delaunay {
   }
 
   private static randomIntFromInterval(min: number, max: number) {
-    // TODO: Extract to points?
-    // Note: result is inclusive of min/max
-    return Math.floor(Math.random() * (max - min + 1) + min);
+    return Math.floor(Math.random() * (max - min + 1) + min); // Includes min/max
   }
 
   private static addVertex(solution: Triangle[], vertex: Point): Triangle[] {
-    // TODO: Implement
     let edgeBuffer: Edge[] = [];
-
-    // #1 - For each triangle in the solution:
-    // If this point lies within said triangle's circumcircle, then discard this triangle but hold onto the edges
-    // for (let i = 0; i < solution.length; i++) {
-    //   const triangle = solution[i];
-    //   if (vertex.isWithinCircumcircle(triangle)) {
-    //     edgeBuffer.push(new Edge(triangle.pointA, triangle.pointB)); // AB edge
-    //     edgeBuffer.push(new Edge(triangle.pointB, triangle.pointC)); // BC edge
-    //     edgeBuffer.push(new Edge(triangle.pointA, triangle.pointC)); // AC edge
-    //
-    //     solution.splice(i);
-    //     i -= 1;
-    //   }
-    // }
 
     let i = 0;
     while (i < solution.length) {

@@ -17,13 +17,13 @@ export class Edge {
     return this._pointB;
   }
 
-  public static areEqual(thisEdge: Edge, comparisonEdge: Edge): boolean {
+  public isEqualTo(comparisonEdge: Edge): boolean {
     // TODO: consider refactor (too much static?)
-    // the edges AB and CD are equal if:
+    // The edges AB and CD are equal if:
     // (A == C && B == D) || (A == D && B == C)
 
-    const pointA: Point = thisEdge.pointA;
-    const pointB: Point = thisEdge.pointB;
+    const pointA: Point = this.pointA;
+    const pointB: Point = this.pointB;
     const pointC: Point = comparisonEdge.pointA;
     const pointD: Point = comparisonEdge.pointB;
 
@@ -43,12 +43,12 @@ export class Edge {
     // TODO: sort naming!
     let j = 0;
     while (j < edgeBuffer.length) {
-      // edges stored as eB = [(x1,y1), (x2,y2),    (X1,Y1), (X2,Y2),    ...]
+      // Edges stored as eB = [(x1,y1), (x2,y2),    (X1,Y1), (X2,Y2),    ...]
       let k = j + 1; // next edge
       const thisEdge = edgeBuffer[j];
       while (k < edgeBuffer.length) {
         const tempEdge = edgeBuffer[k];
-        if (Edge.areEqual(thisEdge, tempEdge)) {
+        if (thisEdge.isEqualTo(tempEdge)) {
           edgeBuffer.splice(k, 1);
           edgeBuffer.splice(j, 1);
           j -= 1;

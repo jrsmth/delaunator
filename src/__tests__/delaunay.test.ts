@@ -4,17 +4,17 @@ import { Triangle } from '../shapes/triangle';
 
 describe('Delaunay Tests', () => {
   it('should return a unique set of points within a given width and height', () => {
-    // Note: Unique refers to distinctness across all values of x & y, rather than just distinct pairs of (x,y)
+    // unique refers to distinctness across all values of x & y, rather than just distinct pairs of (x,y)
 
-    // Given
+    // given
     const width = 1000;
     const height = 1000;
     const numPoints = 100;
 
-    // When
+    // when
     const points: Point[] = Delaunay.generatePoints(width, height, numPoints);
 
-    // Then
+    // then
     expect(points.length).toBe(numPoints);
 
     const xSet = points.map((pt) => pt.x);
@@ -24,7 +24,7 @@ describe('Delaunay Tests', () => {
     expect(xSet.length).toEqual(new Set(xSet).size);
     expect(ySet.length).toEqual(new Set(ySet).size);
 
-    // all x's/y's are between zero and width/height
+    // all x's and y's are between zero and width/height
     for (const ordinate of xSet) {
       expect(ordinate).toBeGreaterThan(0);
       expect(ordinate).toBeLessThan(width);
@@ -55,7 +55,7 @@ describe('Delaunay Tests', () => {
 
   it('should return a triangle with a duplicated coordinate pair for a set of 2 points', () => {
     // i.e. given a set of two points, a single 'edge' between them should be rendered
-    // this achieved through a triangle of the form [pointA, pointA, pointB]
+    // this is achieved through a triangle of the form [pointA, pointA, pointB]
 
     // given
     let points = Delaunay.generatePoints(100, 100, 2);

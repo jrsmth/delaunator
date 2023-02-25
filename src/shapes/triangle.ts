@@ -36,40 +36,7 @@ export class Triangle {
   }
 
   public static discardSuperTriangle(solution: Triangle[], superTriangle: Triangle): Triangle[] {
-    // for each triangle in the solution, if any point equals a super triangle point then discard that triangle
-    // for (let i = 0; i < solution.length; i++) {
-    //   const triangle = solution[i];
-    //
-    //   const points = [triangle.pointA, triangle.pointB, triangle.pointC];
-    //   const superPoints = [superTriangle.pointA, superTriangle.pointB, superTriangle.pointC];
-    //   hit: for (const point of points) {
-    //     for (const superPoint of superPoints) {
-    //       if (point.x === superPoint.x || point.y === superPoint.y) {
-    //         solution.splice(i);
-    //         i -= 1;
-    //         continue hit;
-    //       }
-    //     }
-    //   }
-
-    // if (
-    //   triangle.pointA === superTriangle.pointA ||
-    //   triangle.pointA === superTriangle.pointB ||
-    //   triangle.pointA === superTriangle.pointC ||
-    //   triangle.pointB === superTriangle.pointA ||
-    //   triangle.pointB === superTriangle.pointB ||
-    //   triangle.pointB === superTriangle.pointC ||
-    //   triangle.pointC === superTriangle.pointA ||
-    //   triangle.pointC === superTriangle.pointB ||
-    //   triangle.pointC === superTriangle.pointC
-    // ) {
-    //   solution.splice(i);
-    //   i -= 1;
-    // }
-    // }
-
-    // Remove any tri that contains a coord of the Super T
-    // for each tri, if any point equals a super T point, remove the tri
+    // For each triangle in the solution, if any point equals a super triangle point then discard that triangle
     let i = 0;
     while (i < solution.length) {
       const points = [solution[i].pointA, solution[i].pointB, solution[i].pointC];
