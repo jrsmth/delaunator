@@ -26,7 +26,7 @@ describe('Edge Tests', () => {
       let edgeTwo: Edge = new Edge(new Point(cx, cy), new Point(dx, dy));
 
       // when
-      let result = Edge.areEqual(edgeOne, edgeTwo);
+      let result = edgeOne.isEqualTo(edgeTwo);
 
       // then
       expect(result).toEqual(equality);
