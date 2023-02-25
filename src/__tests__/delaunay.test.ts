@@ -47,7 +47,7 @@ describe('Delaunay Tests', () => {
     let containedPointFound = false;
     for (let triangle of result) {
       let remainingPoints = randomPoints.filter(
-        (pt) => ![triangle.pointA, triangle.pointB, triangle.pointC].includes(pt),
+        (pt) => ![triangle.pointA, triangle.pointB, triangle.pointC].includes(pt)
       );
 
       for (let point of remainingPoints) {
