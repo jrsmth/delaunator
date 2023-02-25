@@ -6,7 +6,6 @@ import { Point } from '../../shapes/point';
 
 describe('Triangle Tests', () => {
   it('should return a triangle that encompasses the entire point set', () => {
-    // note: see ../resources/super-triangle.png
     // given
     const points = Delaunay.generatePoints(1000, 1000, 10);
     const innerWidth = Math.max(...points.map((pt) => pt.x));
@@ -27,7 +26,6 @@ describe('Triangle Tests', () => {
   });
 
   each([
-    // TODO: extract to fixture?
     [
       new Triangle(new Point(-1573.0000000000002, -694.1), new Point(0, 1388.2), new Point(3146.0000000000005, 0)),
       [
@@ -50,14 +48,6 @@ describe('Triangle Tests', () => {
 
       // then
       expect(result).toEqual(solnAfter);
-      // get a failing solution from lib and try to debug issue
-
-      // TODO:
-      // 813 349 388 265 2664.2 0    <---- this one belongs to the super triangle and should have been removed!
-      // 813 349 388 265 662 569
-      // 813 349 1211 529 777 614
-      // 813 349 662 569 777 614
-      // 5 points ^
     },
   );
 });

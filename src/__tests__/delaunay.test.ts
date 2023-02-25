@@ -36,21 +36,26 @@ describe('Delaunay Tests', () => {
     }
   });
 
-  it('should calculate a valid delaunay triangulation for a given set of points', () => {
+  it('should calculate a valid delaunay triangulation for a set of points', () => {
     // given
-    const pointA = new Point(10, 10);
-    const pointB = new Point(10, 100);
-    const pointC = new Point(100, 100);
-    const pointD = new Point(100, 10);
-
-    const points = [pointA, pointB, pointC, pointD];
+    let randomPoints = Delaunay.generatePoints(1000, 1000, 10);
 
     // when
-    let result = Delaunay.triangulate(points);
+    let result = Delaunay.triangulate(randomPoints);
 
-    // then
-    console.log(result);
-    // expect(result.length).toEqual(2);
+    // then: solution is a valid delaunay triangulation if no triangle's circumcircle contains a point from the point set
+    let containedPointFound = false;
+    for (let triangle of result) {
+      let remainingPoints = randomPoints.filter(pt => ![triangle.pointA, triangle.pointB, triangle.pointC].includes(pt));
+
+      for (let point of remainingPoints) {
+        if (point.isWithinCircumcircle(triangle)) {
+          containedPointFound = true;
+        }
+      }
+    }
+
+    expect(containedPointFound).toBe(false);
   });
 
   it('should return a triangle with a duplicated coordinate pair for a set of 2 points', () => {

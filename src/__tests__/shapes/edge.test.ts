@@ -34,7 +34,6 @@ describe('Edge Tests', () => {
   );
 
   each([
-    // TODO: extract to fixture?
     [
       [
         new Edge(new Point(0, 0), new Point(100, 0)),
@@ -62,13 +61,13 @@ describe('Edge Tests', () => {
       ],
     ],
   ]).it('should remove edges were the count is greater than 1', (edges: Edge[], processedEdges: Edge[]) => {
-    // CASE-0: No edge removal necessary
-    // CASE-N: Edges that exist more than once are discarded
+    // CASE-0: no edge removal necessary
+    // CASE-N: edges with a count greater than one to be discarded
 
     // when
     let result = Edge.removeDuplicateEdges(edges);
 
     // then
     expect(result).toEqual(processedEdges);
-  }); // FixMe
+  });
 });

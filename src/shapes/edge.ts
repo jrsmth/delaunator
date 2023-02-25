@@ -66,5 +66,3 @@ export class Edge {
     return edgeBuffer;
   }
 }
-
-// TODO: fix tests and improve coverage

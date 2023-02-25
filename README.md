@@ -10,3 +10,8 @@ TypeScript [library](https://www.npmjs.com/package/@jrsmiffy/delaunator) that ge
 
 ## Release
 `make release bump=<VERSION>|major|minor|patch notes="<NOTES>"`
+
+<br>
+
+## Test
+`npx jest --coverage`

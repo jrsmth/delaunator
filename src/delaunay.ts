@@ -28,12 +28,10 @@ export class Delaunay {
   }
 
   public static triangulate(points: Point[]): Triangle[] {
-    console.log('running with version: 1.4.2'); // remove me
     let solution: Triangle[] = [];
+
     if (points.length < 2) return solution;
-
     if (points.length === 2) return [new Triangle(points[0], points[0], points[1])];
-
     if (points.length === 3) return [new Triangle(points[0], points[1], points[2])];
 
     // #1 - Create a super triangle that encloses all points
@@ -98,5 +96,3 @@ export class Delaunay {
     return solution;
   }
 }
-
-// TODO: fix tests and improve coverage

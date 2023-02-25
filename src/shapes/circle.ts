@@ -29,5 +29,3 @@ export class Circle {
     return Math.sqrt(radiusSquared);
   }
 }
-
-// TODO: fix tests and improve coverage

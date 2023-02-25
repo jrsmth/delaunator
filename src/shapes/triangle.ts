@@ -57,5 +57,3 @@ export class Triangle {
     return solution;
   }
 }
-
-// TODO: fix tests and improve coverage
