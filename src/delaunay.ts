@@ -28,6 +28,7 @@ export class Delaunay {
   }
 
   public static triangulate(points: Point[]): Triangle[] {
+    console.log('running with version: 1.4.2'); // remove me
     let solution: Triangle[] = [];
     if (points.length < 2) return solution;
 
