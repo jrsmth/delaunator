@@ -36,7 +36,7 @@ export class Triangle {
   }
 
   public static discardSuperTriangle(solution: Triangle[], superTriangle: Triangle): Triangle[] {
-    // For each triangle in the solution, if any point equals a super triangle point then discard that triangle
+    // for each triangle in the solution, if any point equals a super triangle point then discard that triangle
     let i = 0;
     while (i < solution.length) {
       const points = [solution[i].pointA, solution[i].pointB, solution[i].pointC];
@@ -57,3 +57,5 @@ export class Triangle {
     return solution;
   }
 }
+
+// TODO: fix tests and improve coverage

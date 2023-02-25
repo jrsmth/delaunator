@@ -3,8 +3,6 @@ import { Triangle } from './triangle';
 
 export class Circle {
   public calculateCenter(pointA: Point, pointB: Point, pointC: Point): Point {
-    // https://stackoverflow.com/questions/32861804/how-to-calculate-the-centre-point-of-a-circle-given-three-points
-
     const yDeltaOne = pointB.y - pointA.y;
     const xDeltaOne = pointB.x - pointA.x;
     const yDeltaTwo = pointC.y - pointB.y;
@@ -31,3 +29,5 @@ export class Circle {
     return Math.sqrt(radiusSquared);
   }
 }
+
+// TODO: fix tests and improve coverage
