@@ -46,7 +46,9 @@ describe('Delaunay Tests', () => {
     // then: solution is a valid delaunay triangulation if no triangle's circumcircle contains a point from the point set
     let containedPointFound = false;
     for (let triangle of result) {
-      let remainingPoints = randomPoints.filter(pt => ![triangle.pointA, triangle.pointB, triangle.pointC].includes(pt));
+      let remainingPoints = randomPoints.filter(
+        (pt) => ![triangle.pointA, triangle.pointB, triangle.pointC].includes(pt),
+      );
 
       for (let point of remainingPoints) {
         if (point.isWithinCircumcircle(triangle)) {
