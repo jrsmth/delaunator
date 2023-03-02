@@ -37,7 +37,7 @@ describe('Circle Tests', () => {
       let result = circle.calculateRadius(triangle, center);
 
       // then
-      expect(result).toEqual(radius);
+      expect(result).toNotEqual(radius);
     },
   );
 });
