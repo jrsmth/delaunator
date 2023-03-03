@@ -13,8 +13,8 @@ TypeScript [library](https://www.npmjs.com/package/@jrsmiffy/delaunator) that ge
 `npx jest --coverage`
 
 ## Example
-[jrsmiffy/delaunay](https://github.com/JRSmiffy/delaunay)
 ```typescript
  let points: Point[] = Delaunay.generatePoints(svgWidth, svgHeight, numberOfPoints);
  let triangulation: Triangle[] = Delaunay.triangulate(points);
 ```
+[jrsmiffy/delaunay](https://github.com/JRSmiffy/delaunay)
