@@ -14,7 +14,7 @@ TypeScript [library](https://www.npmjs.com/package/@jrsmiffy/delaunator) that ge
 
 ## Example
 ```typescript
- /** https://github.com/JRSmiffy/delaunay */
+ // https://github.com/JRSmiffy/delaunay
  let points: Point[] = Delaunay.generatePoints(svgWidth, svgHeight, numberOfPoints);
  let triangulation: Triangle[] = Delaunay.triangulate(points);
 ```
