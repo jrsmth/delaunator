@@ -17,4 +17,4 @@ TypeScript [library](https://www.npmjs.com/package/@jrsmiffy/delaunator) that ge
  let points: Point[] = Delaunay.generatePoints(svgWidth, svgHeight, numberOfPoints);
  let triangulation: Triangle[] = Delaunay.triangulate(points);
 ```
-[jrsmiffy/delaunay](https://github.com/JRSmiffy/delaunay)
+ℹ️ [@jrsmiffy/delaunay](https://github.com/JRSmiffy/delaunay)
