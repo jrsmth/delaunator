@@ -1,4 +1,4 @@
- [![Node.js CI](https://github.com/JRSmiffy/delaunator/actions/workflows/main.yaml/badge.svg)](https://github.com/JRSmiffy/delaunator/actions/workflows/main.yaml)
+ [![Node.js CI](https://github.com/jrsmth/delaunator/actions/workflows/main.yaml/badge.svg)](https://github.com/jrsmth/delaunator/actions/workflows/main.yaml)
  
  # Delaunator
 TypeScript [library](https://www.npmjs.com/package/@jrsmiffy/delaunator) that generates Delaunay Triangulations <br>
@@ -14,7 +14,7 @@ TypeScript [library](https://www.npmjs.com/package/@jrsmiffy/delaunator) that ge
 
 ## Example
 ```typescript
- // https://github.com/JRSmiffy/delaunay
+ // https://github.com/jrsmth/delaunay
  let points: Point[] = Delaunay.generatePoints(svgWidth, svgHeight, numberOfPoints);
  let triangulation: Triangle[] = Delaunay.triangulate(points);
 ```
